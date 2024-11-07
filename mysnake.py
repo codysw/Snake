@@ -59,7 +59,7 @@ class MySnake():
         #screen.fill(self.sets.bg_color)
         myRect = pygame.Rect(self.x, self.y,self.rect_size[0], self.rect_size[1] )
         #myRect = pygame.Rect( self.size, self.size,self.x, self.y )
-        pygame.draw.rect(screen, (20,20,20), myRect )
+        pygame.draw.rect(screen, (10,10,10), myRect )
 
     def update(self, screen):
         #print("SNAKE: (", self.x, " , " , self.y , ")" )

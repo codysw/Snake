@@ -1,0 +1,23 @@
+1. System funkcyjny funkcjonalnie pełny:
+(N, OR) => N, OR, AND = N(Np OR Nq) , IMP = Np OR q , EQ = p => q AND q=> p
+
+2. System funkcyjny funkcjonalnie pełny minimalny:
+(N, OR) -> po usunieciu dowolonego z elementów nie da się już stworzyć każdej funkcji logicznej
+
+3. System funkcyjny funkcjonalnie pełny nadmiarowy:
+(N, OR, AND) -> po usunieciu and można zrobic to co w 1, wiec AND jest nadmiarowe
+
+4. WAZNIEJSZE PRAWA -> wiadomo
+
+5. Minterm:
+zawsze przyjmuje true
+dowlolny ciag 0 i 1 robie prawda:
+dla 0 1 0 1:
+minterm = ~(0) and 1 and ~(0) and 1
+
+6 Maxterm
+zawsze przyjmuje falsz
+OR , na odwrot niz minterm
+
+
+7. CNF - Conjunctive Normal Form
