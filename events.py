@@ -25,6 +25,9 @@ def check_keydown(event, screen, snake : MySnake, apple : Apple):
     elif event.key == pygame.K_d:
         if snake.direction != Direction.LEFT:
             snake.direction = Direction.RIGHT
+    elif event.key == pygame.K_SPACE:
+        snake.eat()
+        print( "( ",snake.body[-1].x , " , " , snake.body[-1].y," )" )
 
 def check_collision(screen, snake : MySnake, apple : Apple):
     sets = Settings()

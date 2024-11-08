@@ -20,7 +20,12 @@ class Segment():
         self.x = x
         self.y = y
         myRect = pygame.Rect(self.x, self.y,self.size, self.size)
-        pygame.draw.rect(screen, (20,20,20), myRect)
+        
 
     def rm(self, screen, sets : Settings): ### JAKI JA MAM NA TO POMYSL ???
         pass
+    
+    def draw(self,screen, sets: Settings):
+        myRect = pygame.Rect(self.x, self.y,self.size, self.size )
+        pygame.draw.rect(screen, (20,20,20), myRect)
+        

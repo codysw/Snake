@@ -24,25 +24,42 @@ class MySnake():
     def get_pos(self):
         return (self.x, self.y)
 
-    def move(self):
+    def eat(self):
+        tmp_x = self.body[-1].x          ### SREDNI POMYSL, w skrajnych przypadkach ostatni el moze uciec
+        tmp_y = self.body[-1].y          ### przypisuje kierunek poprzedniego
+        if self.body[-1].direction == Direction.UP:
+            tmp_y += self.sets.gap
+        elif self.body[-1].direction == Direction.DOWN:
+            tmp_y -= self.sets.gap
+        elif self.body[-1].direction == Direction.RIGHT:
+            tmp_x -= self.sets.gap
+        elif self.body[-1].direction == Direction.LEFT:
+            tmp_x += self.sets.gap
+
+        self.body.append( Segment(tmp_x, tmp_y, self.sets.gap, self.body[-1].direction)) 
+    def move(self):                 
         sets = Settings()
         zeit = sets.zeit
         time.sleep(zeit)
         if self.direction == Direction.RIGHT:
             time.sleep(zeit)
-            self.x += self.rect_size[0]
+            for segment in self.body:
+                segment.x += self.rect_size[0]
             time.sleep(zeit)
         elif self.direction == Direction.LEFT:
             time.sleep(zeit)
-            self.x -= self.rect_size[0]
+            for segment in self.body:
+                segment.x -= self.rect_size[0]
             time.sleep(zeit)
         elif self.direction == Direction.UP:
             time.sleep(zeit)
-            self.y -= self.rect_size[0]
+            for segment in self.body:
+                segment.y -= self.rect_size[0]
             time.sleep(zeit)
         elif self.direction == Direction.DOWN:
             time.sleep(zeit)
-            self.y += self.rect_size[0]
+            for segment in self.body:
+                segment.y += self.rect_size[0]
             time.sleep(zeit)
 
         if self.y >= sets.screen_height:
@@ -56,10 +73,23 @@ class MySnake():
         return
     
     def drawme(self, screen):
+        # i = 1
+        # copy = self.body[:]
+        # while i < len(self.body):
+        #     self.body[i].x = copy[i-1].x
+        #     self.body[i].y = copy[i-1].y
+        #     i += 1
+        # self.body[0].x = self.x
+        # self.body[0].y = self.y
+
+
+        for segment in self.body:
+            segment.draw( screen, Settings() )
+
         #screen.fill(self.sets.bg_color)
-        myRect = pygame.Rect(self.x, self.y,self.rect_size[0], self.rect_size[1] )
+        #myRect = pygame.Rect(self.x, self.y,self.rect_size[0], self.rect_size[1] )
         #myRect = pygame.Rect( self.size, self.size,self.x, self.y )
-        pygame.draw.rect(screen, (10,10,10), myRect )
+        #pygame.draw.rect(screen, (10,10,10), myRect )
 
     def update(self, screen):
         #print("SNAKE: (", self.x, " , " , self.y , ")" )
